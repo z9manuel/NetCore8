@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # Reemplace los valores de Company y Application por los de su proyecto
-Company="Company"                   # Nombre de la empresa
-Application="Application"           # Nombre de la aplicacion
+Company="CongresoGTO"                   # Nombre de la empresa
+Application="Recursos"           # Nombre de la aplicacion
 
 echo "\n###########################################"
 echo "INICIANDO CREACION DE PROYECTO C#"
@@ -68,7 +68,7 @@ echo "\n###########################################"
 echo "Agregando proyectos a la solucion"
 cd ../..
 dotnet sln add "src/API/$Company.$Application.Api"
-dotnet sln add "src/Core/$Application/$Company.$Application.Application"
+dotnet sln add "src/Core/Application/$Company.$Application.Application"
 dotnet sln add "src/Core/Domain/$Company.$Application.Domain"
 dotnet sln add "src/Infraestructure/Persistence/$Company.$Application.Persistence"
 dotnet sln add "src/Infraestructure/External/$Company.$Application.External"
@@ -94,7 +94,7 @@ echo "Referencias agregadas a Persistence"
 echo "\n###########################################"
 echo "Agregando referencias a Application"
 cd ../../../..
-cd "src/Core/$Application/$Company.$Application.Application"
+cd "src/Core/Application/$Company.$Application.Application"
 dotnet add reference "../../../Core/Domain/$Company.$Application.Domain/$Company.$Application.Domain.csproj"
 echo "Referencias agregadas a Application"
 
@@ -108,7 +108,7 @@ echo "Referencias agregadas a Api"
 echo "\n###########################################"
 echo "Eliminando clases inecesarias..."
 cd ../../..
-rm "src/Core/$Application/$Company.$Application.Application/Class1.cs"
+rm "src/Core/Application/$Company.$Application.Application/Class1.cs"
 rm "src/Core/Domain/$Company.$Application.Domain/Class1.cs"
 rm "src/Infraestructure/Persistence/$Company.$Application.Persistence/Class1.cs"
 rm "src/Infraestructure/External/$Company.$Application.External/Class1.cs"
@@ -119,7 +119,7 @@ echo "\n###########################################"
 echo "Generando inyeccion de dependencias..."
 
 touch "src/API/$Company.$Application.Api/DependencyInjectionService.cs"
-touch "src/Core/$Application/$Company.$Application.Application/DependencyInjectionService.cs"
+touch "src/Core/Application/$Company.$Application.Application/DependencyInjectionService.cs"
 touch "src/Infraestructure/Persistence/$Company.$Application.Persistence/DependencyInjectionService.cs"
 touch "src/Infraestructure/External/$Company.$Application.External/DependencyInjectionService.cs"
 touch "src/Common/$Company.$Application.Common/DependencyInjectionService.cs"
